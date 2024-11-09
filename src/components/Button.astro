@@ -1,0 +1,21 @@
+---
+import '../styles/global.css'
+const {texto, ruta} = Astro.props;
+---
+<style>
+    a {
+        color: var(--primary-text);
+        text-decoration: none;
+    }
+    a span {
+        transition-property: background-color;
+        transition-duration: 0.25s;
+        padding: 0.75rem 1rem;
+        border-radius: 10%;
+        background-color: var(--active);
+    }
+    a span:hover {
+        background-color: var(--emphasis);
+    }
+</style>
+<a href={ruta}><span>{texto}</span></a>

@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/">Inicio</a>
-    <a href="/about/">Sobre mi</a>
-    <a href="/blog">Blog</a>
-  
-    <h1>Mi sitio Astro</h1>
-    <h1>Mi blog de Astro aprendizaje</h1>
-    <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-  </body>
-</html>
+---
+import Base from "../layouts/Base.astro";
+import BlogPost from "../components/BlogPost.astro";
+import "../styles/global.css";
+
+const posts = await Astro.glob("./posts/*.md");
+---
+
+<Base titulo="Blog" ruta="/blog/blog">
+  <h1>Publicaciones recientes</h1>
+  {
+    posts.map((post) => (
+      <BlogPost
+        titulo={post.frontmatter.title}
+        fecha={post.frontmatter.pubDate}
+        resumen={post.frontmatter.description}
+        img={post.frontmatter.image.url}
+        url={post.url}
+      />
+    ))
+  }
+</Base>

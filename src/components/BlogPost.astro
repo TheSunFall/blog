@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+
+const { titulo, fecha, resumen, img, url } = Astro.props;
+---
+
+<a href={url}>
+    <article>
+        <img src={img} alt="Imagen del post" />
+        <div class="blog-post-content">
+            <h2 class="blog-post-title">{titulo}</h2>
+            <p class="blog-post-date">{fecha}</p>
+            <p class="blog-post-excerpt">{resumen}</p>
+        </div>
+    </article>
+</a>
+
+
+<style>
+    article {
+        display: grid;
+        grid-template-columns: 15% 1fr;
+        gap: 1.5rem;
+        transition: background-color 0.25s;
+        background-color: var(--active);
+        margin: 1.5rem;
+        padding: 1rem;
+        img {
+            max-width: 100%;
+            grid-column: 1/2;
+        }
+    }
+    article:hover {
+        background-color: var(--emphasis);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .blog-post-date {
+        font-size: 0.9em;
+        color: var(--subtle);
+        margin: 0 0 16px;
+    }
+</style>

@@ -1,0 +1,41 @@
+---
+const { activa } = Astro.props;
+---
+
+<style>
+    header {
+        background-color: var(--primary-bg);
+        height: 4rem;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-row: 1/2;
+        font-weight: lighter;
+        box-sizing: border-box;
+        
+    }
+    a {
+        margin: 1rem;
+    }
+    a span {
+        transition-property: background-color;
+        transition-duration: 0.25s;
+        padding: 0.75rem 1rem;
+        border-radius: 10%;
+    }
+    a.activa span {
+        background-color: var(--active);
+    }
+    a span:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: var(--emphasis);
+    }
+</style>
+<header>
+    <a href="/blog/" class={activa === "/blog" ? "activa" : ""}><span>
+        Inicio</span></a>
+    <a href="/blog/about/" class={activa === "/blog/about" ? "activa" : ""}><span>Acerca de</span></a>
+    <a href="/blog/blog/" class={activa === "/blog/blog" ? "activa" : ""}><span>Blog</span></a>
+</header>
